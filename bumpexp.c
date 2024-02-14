@@ -166,7 +166,6 @@ void *Out(void *p){
 	DaSmplChReq[1].ulRange = DA_10V;
 	
 	
-
 	while( i++ < TestCount ){
 
 		ampv1 = 2.0;
@@ -202,7 +201,6 @@ void *Out(void *p){
 		double X = (newvalue_x + H_LAM) * 2 * M_PI / LAM;
 		double MAX_EXP=0;
 		
-
 		double sigma = 1, extremum;
 		double alpha,surf=1.0;
 		double EX = newvalue_x / 10;
@@ -222,36 +220,30 @@ void *Out(void *p){
 					sigma = 0.5;// ここを1/2とするとエラーintと判断されてしまうため
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = 2 * exp(-1/2);
 					Output[1] = ga * a * 4.0 * sqrt( -2 * EX / MAX_EXP * exp( -pow( EX,2 ) / sigma) / sigma + 1.0) / 10.0 * 0x8000 + 0x8000;
 					break;
 				case '1':
 					sigma = 2;
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = sqrt(1/exp(1));
 					Output[1] = ga * a * 4.0 * sqrt( -2 * EX / MAX_EXP * exp( -pow( EX,2 ) / sigma) / sigma + 1.0 ) / 10.0 * 0x8000 + 0x8000;			
 					break;
 				case 'b':
 					sigma = 1;
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = sqrt(2) * exp(-1/2);
-					//double X = 3 * newvalue_x / (2 * H_LAM);
 					Output[1] = ga * a * 4.0 * sqrt( -2 * (-EX) / MAX_EXP * exp( -pow( -EX,2 ) / sigma) / sigma + 1.0 ) / 10.0 * 0x8000 + 0x8000;
 					break;
 				case 'c':
 					sigma = 0.5;// ここを1/2とするとエラーintと判断されてしまうため
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = 2 * exp(-1/2);
 					Output[1] = ga * a * 4.0 * sqrt( -2 * (-EX) / MAX_EXP * exp( -pow( -EX,2 ) / sigma) / sigma + 1.0) / 10.0 * 0x8000 + 0x8000;
 					break;
 				case 'a':
 					sigma = 2;
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = sqrt(1/exp(1));
 					Output[1] = ga * a * 4.0 * sqrt( -2 * (-EX) / MAX_EXP * exp( -pow( -EX,2 ) / sigma) / sigma + 1.0 ) / 10.0 * 0x8000 + 0x8000;			
 					break;
 				default:
@@ -607,9 +599,6 @@ int main( int argc, char *argv[] ){
 		newvalue_y = Data1[0] * (-84.9108) + Data1[1] * 94.38 + Data1[2] * 75.2135 + Data1[3] * (-84.9345) / (Data1[0] + Data1[1] + Data1[2] + Data1[3]);
 		newvalue_f = Data1[0] * 420.2561 + Data1[1] * 475.5806 + Data1[2] * 410.5575 + Data1[3] * 459.6844;
 
-		//newvalue_x = (-97.5 * (Data2[0] + Data2[1]) + 97.5* (Data2[2] + Data2[3])) / (Data2[0] + Data2[1] + Data2[2] + Data2[3]);
-		//newvalue_y =  (-65 * (Data2[1] + Data2[3]) + 65 * (Data2[0] + Data2[2])) / (Data2[0] + Data2[1] + Data2[2] + Data2[3]); 
-					
 		//limit of position
 		/*if (Data2[0] < 0.2 && Data2[1] < 0.2 && Data2[2] < 0.2 && Data2[3] < 0.2){
 			newvalue_x = 0;
