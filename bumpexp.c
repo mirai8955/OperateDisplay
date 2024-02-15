@@ -212,8 +212,6 @@ void *Out(void *p){
 					sigma = 1;
 					extremum = -sqrt(sigma*0.5);
 					MAX_EXP = -2 * extremum * exp( -pow( extremum, 2 ) / sigma ) / sigma;
-					//MAX_EXP = sqrt(2) * exp(-1/2);
-					//double X = 3 * newvalue_x / (2 * H_LAM);
 					Output[1] = ga * a * 4.0 * sqrt( -2 * EX / MAX_EXP * exp( -pow( EX,2 ) / sigma) / sigma + 1.0 ) / 10.0 * 0x8000 + 0x8000;
 					break;
 				case '3':
